@@ -1,0 +1,37 @@
+@page
+@model TeamsHubWebClient.Pages.LoginModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Animated Login Form 02</title>
+        <link rel="stylesheet" href="/css/Style.css" asp-append-version="true" />
+    </head>
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <div class="box">
+        <span class="borderLine"></span>
+        <form method="post">
+            <h2>Sign in</h2>
+            <div class="inputBox">
+                <input type="email" required="required" asp-for="@Model.sessionLoginRequest.Email">
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" asp-for="@Model.sessionLoginRequest.Password">
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="#">Forgot Password</a>
+                <a href="#">Signup</a>
+            </div>
+            <input type="submit" value="login">
+        </form>
+</body>
+

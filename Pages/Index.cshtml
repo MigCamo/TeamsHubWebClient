@@ -1,0 +1,282 @@
+﻿@page
+@model IndexModel
+@using TeamsHubWebClient.DTOs
+@{
+    ViewData["Title"] = "Gestión de Cursos";
+}
+<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.5/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.5/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.js"></script>
+
+
+<link href="/lib/fileinput/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<script src="/lib/fileinput/fileinput.min.js"></script>
+
+
+<style>
+        body, html{
+            height: 100%;
+            background-image: url('https://wallpapercave.com/wp/wp8286207.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .full-container {
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center;     /* Centra verticalmente */
+            height: 100vh;            /* Contenedor ocupa todo el alto de la ventana */
+        }
+
+        .content {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px; 
+            max-width: 800px; 
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 5mm;
+        }
+
+        .btn {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; 
+            transition: background-color 0.3s; 
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+    </style>
+
+<h1>TeamsHub</h1>
+    <div class="row">
+        <div class="col-sm-2">
+            <input class="form-check-input" type="radio"   name="seleccionCursos" checked onclick="seleccionTodos();">
+            <label class="form-check-label" for="cursosFechas"><strong>Mis Proyectos</strong></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <input class="form-check-input" type="radio"  name="seleccionCursos" onclick="seleccionFechas();">
+            <label class="form-check-label" for="cursosFechas"><strong>Rango de fechas</strong></label>
+        </div>
+        
+
+        <span class="col-sm-2" asp-for="inicio">Fecha de Inicio</span>
+        <div class="col-sm-2 ">
+            <input class="form-control"  type="date" asp-for="@Model.StartDate">
+        </div>
+        <span class="col-sm-2" asp-for="@Model.EndDate">Fecha de Término</span>
+        <div class="col-sm-2">
+            <input class="form-control" type="date" asp-for="@Model.EndDate">
+        </div>        
+        <span class="col-sm-1"></span>
+        <button  type="button" class="col-sm-1 btn btn-primary btn-sm" id="consultar" onclick="cargarCursosFechas();">Consultar</button>
+    </div>
+
+
+<table id="tablaCursos" class="table table-dark table-striped-columns">
+    <thead>
+        <tr>
+            <th>IdProject</th>
+            <th>Name</th>
+            <th>StartDate</th>
+            <th>EndDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+
+<script>
+    var tablaCursos;
+    var noSeleccionar=false;
+    
+    $(document).ready(function() {
+        tablaCursos = $("#tablaCursos").DataTable({            
+            columns: [
+                { data: 'idProject', visible:false},
+                { data: 'name' },
+                { data: 'startDate' },
+                { data: 'endDate' }
+            ],
+            columnDefs: [
+                {
+                    targets: 3,
+                    className: 'dt-body-center'
+                }
+            ],
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-MX.json'
+            }
+        });
+
+        $('#tablaCursos tbody').on('click', 'tr', function () {
+            if (!noSeleccionar) {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    tablaCursos.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                    
+                    var curso = tablaCursos.row(this).data();
+                    redirigirACurso(curso);
+                }                        
+            } else
+                noSeleccionar = false;
+        });        
+
+        seleccionTodos();
+    });
+
+    function redirigirACurso(curso) {
+        var idProject = curso.idProject;
+        var name = curso.name;
+
+        // Crea una URL con parámetros de consulta
+        var url = `/Login`;
+
+        // Redirige a la nueva página
+        window.location.href = url;
+    }
+
+    function cargarCursosTodos() {
+        tablaCursos.ajax.url("/TeamHub/Projects/MyProjects").load();
+    }
+
+    function cargarCursosFechas() {
+        var inicio = $("#StartDate").val();
+        var termino = $("#EndDate").val();
+        tablaCursos.ajax.url(`/TeamHub/Projects/MyProjects/${inicio}/${termino}`).load();
+    }
+
+    function seleccionTodos() {        
+        $("#StartDate").prop("disabled", true);
+        $("#EndDate").prop("disabled", true);
+        $("#consultar").prop("disabled", true);
+        cargarCursosTodos();
+    }
+
+    function seleccionFechas() {        
+        $("#StartDate").prop("disabled", false);
+        $("#EndDate").prop("disabled", false);
+        $("#consultar").prop("disabled", false);
+        cargarCursosFechas();
+    }
+
+    function agregarCurso() {        
+        cursoID = 0;
+        $("#Project_Name").val("");        
+        $("#Project_StartDate").val("");        
+        $("#Project_EndDate").val("");        
+        $("#Project_IdProject").val(0);   
+        $("#projectDialog").modal("show");
+    }
+
+    var cursoID = 0;
+    function cargarCurso(Project) {        
+        cursoID = Project.IdProject;
+        $("#Project_Name").val(Project.Name);        
+        $("#Project_StartDate").val(Project.StartDate.substring(0,10));        
+        $("#Project_EndDate").val(Project.EndDate.substring(0,10));        
+        $("#projectDialog").modal("show");
+
+    }
+
+    function guardarCurso() {
+        datosCurso = {
+            id: IdProject,
+            Name: $("#Project_Name").val(),
+            StartDate: $("#Project_StartDate").val(),
+            EndDate: $("#Project_EndDate").val(),
+        }
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: "/TeamHub/Projects/SaveProject",
+            data: JSON.stringify(datosCurso),
+            success: function(data) {
+                if (data) {
+                    alert("La información ha sido almacenada con éxito");
+                    $("#dialogoCurso").modal("hide");
+                }
+            }
+        });
+    }
+
+    function eliminarCurso(id) {
+        
+    }
+</script>
+
+    <div class="modal fade" id="dialogoCurso" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="etiquetaTitulo">Edición de Cursos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-3">
+                        <label asp-for="@Model.Project.IdProject" class="form-label">Clave</label>
+                        <input type="text" class="form-control form-control-sm" asp-for="@Model.Project.IdProject"  placeholder="Clave">
+                    </div>            
+                    <div class="col-9">
+                        <label asp-for="@Model.Project.Name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control form-control-sm" asp-for="@Model.Project.Name" placeholder="Nombre del Curso">
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="@Model.Project.StartDate" class="form-label">Instructor</label>
+                        <input type="text" class="form-control form-control-sm" asp-for="@Model.Project.StartDate" placeholder="Nombre del Instructor">
+                    </div>                
+                    <div class="col-md-3">
+                        <label for="@Model.Project.EndDate" class="form-label">No. Horas</label>
+                        <input type="number" class="form-control" asp-for="@Model.Project.EndDate">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="guardarCurso();">Guardar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="dialogoErrorCurso" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable ">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="etiquetaTitulo">Error</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">                
+            <h4 class="text-danger">Error guardando el curso <strong>@Model.Project.Name</strong></h4>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>                
+        </div>
+        </div>
+    </div>
+</div>
+    
