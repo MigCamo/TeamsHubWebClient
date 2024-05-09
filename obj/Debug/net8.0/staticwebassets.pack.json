@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Style.css"
     },
     {
+      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\css\\StylesMainMenuProject.css",
+      "PackagePath": "staticwebassets\\css\\StylesMainMenuProject.css"
+    },
+    {
       "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -27,6 +31,10 @@
     {
       "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\wp3144326-color-gradient-wallpapers.jpg",
       "PackagePath": "staticwebassets\\images\\wp3144326-color-gradient-wallpapers.jpg"
+    },
+    {
+      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\js\\ScriptsMainMenuProject.js",
+      "PackagePath": "staticwebassets\\js\\ScriptsMainMenuProject.js"
     },
     {
       "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\js\\site.js",

@@ -28,3 +28,4 @@ D:\Workspace-C#\TeamsHubWebClient\obj\Debug\net8.0\refint\TeamsHubWebClient.dll
 D:\Workspace-C#\TeamsHubWebClient\obj\Debug\net8.0\TeamsHubWebClient.pdb
 D:\Workspace-C#\TeamsHubWebClient\obj\Debug\net8.0\TeamsHubWebClient.genruntimeconfig.cache
 D:\Workspace-C#\TeamsHubWebClient\obj\Debug\net8.0\ref\TeamsHubWebClient.dll
+d:\Workspace-C#\TeamsHubWebClient\obj\Debug\net8.0\TeamsHubWebClient.sourcelink.json

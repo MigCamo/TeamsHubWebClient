@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a+ww2EYL5pg9Xm2RUwHH9UvZm9QGrt8Nnk4aT963+B4=",
+  "Hash": "+KLlGcRWfUlATV+6D0K5TMlUTr6i5xLvJY4cEcz+FoY=",
   "Source": "TeamsHubWebClient",
   "BasePath": "_content/TeamsHubWebClient",
   "Mode": "Default",
@@ -93,6 +93,25 @@
       "OriginalItemSpec": "wwwroot\\css\\Style.css"
     },
     {
+      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\css\\StylesMainMenuProject.css",
+      "SourceId": "TeamsHubWebClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\",
+      "BasePath": "_content/TeamsHubWebClient",
+      "RelativePath": "css/StylesMainMenuProject.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\StylesMainMenuProject.css"
+    },
+    {
       "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\favicon.ico",
       "SourceId": "TeamsHubWebClient",
       "SourceType": "Discovered",
@@ -167,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\wp3144326-color-gradient-wallpapers.jpg"
+    },
+    {
+      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\js\\ScriptsMainMenuProject.js",
+      "SourceId": "TeamsHubWebClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\",
+      "BasePath": "_content/TeamsHubWebClient",
+      "RelativePath": "js/ScriptsMainMenuProject.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ScriptsMainMenuProject.js"
     },
     {
       "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\js\\site.js",

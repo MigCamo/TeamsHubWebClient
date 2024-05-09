@@ -1,0 +1,118 @@
+@page
+@model TeamsHubWebClient.Pages.MainMenuProject
+@{
+    Layout = null;
+    ViewData["Title"] = "Menu Principal Project";
+}
+
+<link href="/lib/fileinput/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<script src="/lib/fileinput/fileinput.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Teamshub</title>
+    <link rel="stylesheet" href="https://github.com/MigCamo/TeamsHubWebClient-/blob/main/wwwroot/css/StylesMainMenuProject.css">
+</head>
+<body>
+    <!-- Barra de navegación vertical -->
+    <div class="sidebar">
+        <button class="back-btn">&larr;</button>
+        <div class="icon-container">
+            <div class="icon">🏠</div>
+            <div class="icon">📊</div>
+            <div class="icon">📚</div>
+            <div class="icon">⚙️</div>
+            <div class="icon">📝</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Header -->
+        <div class="header">
+            <h1>Teamshub</h1>
+            <h2>Aquí tendría que poner el nombre del proyecto</h2>
+        </div>
+
+        <!-- Tablero de actividades -->
+        <div class="board">
+            <!-- Actividades pendientes -->
+            <div class="column pending">
+                <div class="column-header">
+                    <div class="label-background">
+                        <h3>🔵 Actividades pendientes</h3>
+                    </div>
+                </div>
+                <div id="pendingActivities" class="activity-list">
+                    <!-- Tarjetas generadas dinámicamente -->
+                </div>
+                <button id="addActivityBtn">Agregar actividad</button> <!-- Botón debajo del cuadro -->
+            </div>
+
+            <!-- Actividades en proceso -->
+            <div class="column in-progress">
+                <div class="column-header">
+                    <div class="label-background">
+                        <h3>🔴 Actividades en proceso</h3>
+                    </div>
+                </div>
+                <div id="inProgressActivities" class="activity-list">
+                    <!-- Tarjetas generadas dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Actividades realizadas -->
+            <div class="column completed">
+                <div class="column-header">
+                    <div class="label-background">
+                        <h3>🟢 Actividades realizadas</h3>
+                    </div>
+                </div>
+                <div id="completedActivities" class="activity-list">
+                    <!-- Tarjetas generadas dinámicamente -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario emergente para agregar actividad -->
+        <div id="activityForm" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Agregar nueva actividad</h3>
+                <form id="newActivityForm">
+                    <label for="activityName">Nombre de la actividad:</label>
+                    <input type="text" id="activityName" name="activityName" required>
+
+                    <label para="startDate">Fecha de inicio:</label>
+                    <input type="date" id="startDate" required>
+
+                    <label para="endDate">Fecha de cierre:</label>
+                    <input type="date" id="endDate" required>
+
+                    <label para="responsible">Responsable:</label>
+                    <input type="text" id="responsible" required>
+
+                    <button type="submit">Agregar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal para detalles -->
+        <div id="detailModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Detalles de la actividad</h3>
+                <p id="activityDetails">Detalles aquí...</p>
+                <label para="status">Cambiar estado:</label>
+                <select id="statusCombo">
+                    <option value="pending">Actividades pendientes</option>
+                    <option value="in-progress">Actividades en proceso</option>
+                    <option value="completed">Actividades realizadas</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://github.com/MigCamo/TeamsHubWebClient-/blob/main/wwwroot/js/ScriptsMainMenuProject.js"></script>
+</body>
