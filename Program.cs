@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
 
@@ -5,20 +6,24 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
+
 builder.Services.AddScoped<IUserIdentityManager, UserIdentityManagerRESTProvider>();
 builder.Services.AddScoped<IProjectManager, ProjectManagerRESTProvider>();
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<HttpClientsAuthHelper>();
+
 builder.Services.AddHttpClient("UserIdentityService", client => {
-    var userIdentityService = builder.Configuration.GetSection("Services")["userIdentityService"];
+    var userIdentityService = builder.Configuration.GetSection("Services")["serviciosAPI"];
     client.BaseAddress = new Uri(userIdentityService);
     client.DefaultRequestHeaders.Add("accept", "application/json");
-});
+}).AddHttpMessageHandler<HttpClientsAuthHelper>();;
 
 builder.Services.AddHttpClient("ProjectService", client => {
-    var projectService = builder.Configuration.GetSection("Services")["projectService"];
+    var projectService = builder.Configuration.GetSection("Services")["serviciosAPI"];
     client.BaseAddress = new Uri(projectService);
     client.DefaultRequestHeaders.Add("accept", "application/json");    
-});
+}).AddHttpMessageHandler<HttpClientsAuthHelper>();;
 
 builder.Services.AddSession(options =>
 {
@@ -70,3 +75,29 @@ app.MapPost("/TeamHub/Projects/SaveProject", (IProjectManager proyectManager, Pr
 
 app.MapRazorPages();
 app.Run();
+
+public sealed class HttpClientsAuthHelper : DelegatingHandler
+{
+    private readonly IHttpContextAccessor _accessor;
+
+    public HttpClientsAuthHelper(IHttpContextAccessor accessor)
+    {
+        _accessor = accessor;
+    }
+
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        var token = _accessor.HttpContext.Request.HttpContext.Session.GetString("token_usuario");
+        if (token != null)
+        {
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        }
+        else
+        {
+            // Log the missing token for debugging purposes
+            Console.WriteLine("Token is null");
+        }
+
+        return await base.SendAsync(request, cancellationToken);
+    }
+}

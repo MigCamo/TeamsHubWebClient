@@ -6,11 +6,12 @@ using TeamsHubWebClient.Gateways.Interfaces;
 
 public class UserIdentityManagerRESTProvider : IUserIdentityManager
 {
-
     HttpClient clientUserIdentityService;
+    ILogger<UserIdentityManagerRESTProvider> iLogger;
     public UserIdentityManagerRESTProvider(IHttpClientFactory httpClientFactory)
     {
         clientUserIdentityService = httpClientFactory.CreateClient("UserIdentityService");
+        this.iLogger = iLogger;
     }
 
     public UserValidationResponse ValidateUser(SessionLoginRequest sessionLoginRequest)
