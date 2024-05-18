@@ -21,16 +21,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\fondo.jpg",
-      "PackagePath": "staticwebassets\\images\\fondo.jpg"
+      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\carpeta.png",
+      "PackagePath": "staticwebassets\\images\\carpeta.png"
+    },
+    {
+      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\cerrar-sesion.png",
+      "PackagePath": "staticwebassets\\images\\cerrar-sesion.png"
+    },
+    {
+      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\lista-de-quehaceres.png",
+      "PackagePath": "staticwebassets\\images\\lista-de-quehaceres.png"
     },
     {
       "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\logo.png",
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
-      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\wp3144326-color-gradient-wallpapers.jpg",
-      "PackagePath": "staticwebassets\\images\\wp3144326-color-gradient-wallpapers.jpg"
+      "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\proyecto.png",
+      "PackagePath": "staticwebassets\\images\\proyecto.png"
     },
     {
       "Id": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\js\\ScriptsMainMenuProject.js",

@@ -18,8 +18,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = d:\Workspace-C#\TeamsHubWebClient
 build_property._RazorSourceGeneratorDebug = 
 
+[d:/Workspace-C\#/TeamsHubWebClient/Pages/ActivitiesModule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWN0aXZpdGllc01vZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [d:/Workspace-C\#/TeamsHubWebClient/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Workspace-C\#/TeamsHubWebClient/Pages/FileModule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsZU1vZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Workspace-C\#/TeamsHubWebClient/Pages/GeneralProjectChat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VuZXJhbFByb2plY3RDaGF0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/Workspace-C\#/TeamsHubWebClient/Pages/Index.cshtml]
@@ -30,12 +42,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Workspace-C\#/TeamsHubWebClient/Pages/MainMenuProject.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpbk1lbnVQcm9qZWN0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[d:/Workspace-C\#/TeamsHubWebClient/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+[d:/Workspace-C\#/TeamsHubWebClient/Pages/ProjectForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvamVjdEZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/Workspace-C\#/TeamsHubWebClient/Pages/Shared/_ValidationScriptsPartial.cshtml]

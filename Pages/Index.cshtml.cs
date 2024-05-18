@@ -34,7 +34,7 @@ namespace TeamsHubWebClient.Pages
         {
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
-            listaCursos = _projectManager.GetProjects();            
+            listaCursos = _projectManager.GetProjects(1);            
         }
 
         public void OnPostFechas() {                        
@@ -43,6 +43,7 @@ namespace TeamsHubWebClient.Pages
 
         public void OnPostCurso() {
             bool resultado = false;
+            
             if (Project.IdProject == 0)
                 resultado = _projectManager.AddProject(Project);
             else {
@@ -53,16 +54,16 @@ namespace TeamsHubWebClient.Pages
                     errorGuardandoCurso = true;
             else {
                     Project = new ProjectDTO() {Name="Proyecto Prueba Piloto", StartDate=DateTime.Now.AddDays(1), EndDate=DateTime.Now.AddDays(31)};                    
-            }            
+            }           
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
-            listaCursos = _projectManager.GetProjects();            
+            listaCursos = _projectManager.GetProjects(1);            
         }
 
         public void OnPostConsultarCurso() {                                                        
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
-            listaCursos = _projectManager.GetProjects();  
+            listaCursos = _projectManager.GetProjects(1);  
             
             Project = listaCursos.FirstOrDefault(c => c.IdProject == Project.IdProject);
             

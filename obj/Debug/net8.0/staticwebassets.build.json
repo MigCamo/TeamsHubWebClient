@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+KLlGcRWfUlATV+6D0K5TMlUTr6i5xLvJY4cEcz+FoY=",
+  "Hash": "gkfpV/ek0NVT8CZUrVrpqtkv5vIf6E3EVFEzEEjerw4=",
   "Source": "TeamsHubWebClient",
   "BasePath": "_content/TeamsHubWebClient",
   "Mode": "Default",
@@ -131,12 +131,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\fondo.jpg",
+      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\carpeta.png",
       "SourceId": "TeamsHubWebClient",
       "SourceType": "Discovered",
       "ContentRoot": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\",
       "BasePath": "_content/TeamsHubWebClient",
-      "RelativePath": "images/fondo.jpg",
+      "RelativePath": "images/carpeta.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +147,45 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\fondo.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\carpeta.png"
+    },
+    {
+      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\cerrar-sesion.png",
+      "SourceId": "TeamsHubWebClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\",
+      "BasePath": "_content/TeamsHubWebClient",
+      "RelativePath": "images/cerrar-sesion.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cerrar-sesion.png"
+    },
+    {
+      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\lista-de-quehaceres.png",
+      "SourceId": "TeamsHubWebClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\",
+      "BasePath": "_content/TeamsHubWebClient",
+      "RelativePath": "images/lista-de-quehaceres.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\lista-de-quehaceres.png"
     },
     {
       "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\logo.png",
@@ -169,12 +207,12 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
-      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\wp3144326-color-gradient-wallpapers.jpg",
+      "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\images\\proyecto.png",
       "SourceId": "TeamsHubWebClient",
       "SourceType": "Discovered",
       "ContentRoot": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\",
       "BasePath": "_content/TeamsHubWebClient",
-      "RelativePath": "images/wp3144326-color-gradient-wallpapers.jpg",
+      "RelativePath": "images/proyecto.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -185,7 +223,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\wp3144326-color-gradient-wallpapers.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\proyecto.png"
     },
     {
       "Identity": "d:\\Workspace-C#\\TeamsHubWebClient\\wwwroot\\js\\ScriptsMainMenuProject.js",

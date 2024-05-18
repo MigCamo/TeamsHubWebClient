@@ -29,11 +29,11 @@ public class ProjectManagerRESTProvider : IProjectManager
         }
     }
 
-    public List<ProjectDTO> GetProjects()
+    public List<ProjectDTO> GetProjects(int studentID)
     {
         try
         {
-            var result = clientServiceProjects.GetAsync("/TeamHub/Projects/MyProjects").Result;
+            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/MyProjects/{studentID}").Result;
             result.EnsureSuccessStatusCode();
             var response = result.Content.ReadFromJsonAsync<List<ProjectDTO>>().Result;
             return response;

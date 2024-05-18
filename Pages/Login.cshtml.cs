@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
+using TeamsHubWebClient.SinglentonClasses;
 
 namespace TeamsHubWebClient.Pages
 {
@@ -30,6 +31,9 @@ namespace TeamsHubWebClient.Pages
                 var response = _UserIdentityManager.ValidateUser(sessionLoginRequest);
                 if (response.IsValid) {
                     HttpContext.Session.SetString("token_usuario", sessionLoginRequest.Email);
+                    StudentSinglenton.Id = response.User.Id;
+                    StudentSinglenton.Email = response.User.Email;
+                    StudentSinglenton.FullName = response.User.FullName;
                     Response.Redirect("/");
                 }
             }

@@ -49,12 +49,20 @@ app.UseSession();
 
 app.MapGet("/TeamHub/Projects/MyProjects/{startDate?}/{endDate?}", (IProjectManager proyectManager, DateTime? startDate, DateTime? endDate) =>
 {     
-    return new { data = proyectManager.GetProjectsbyDate(startDate.Value, endDate.Value)};
+    if(startDate != null && endDate != null){
+        return new { data = proyectManager.GetProjectsbyDate(startDate.Value, endDate.Value)};
+    }
+    else
+    {
+        return new { data = proyectManager.GetProjects(1)};
+    }
+
 }).WithName("myProjectsbyDate");
 
-app.MapGet("/TeamHub/Projects/MyProjects", (IProjectManager proyectManager) =>
+app.MapGet("/TeamHub/Projects/MyProjects/{studentID}", (IProjectManager proyectManager, int studentID) =>
 {     
-        return new { data = proyectManager.GetProjects()};
+        return new { data = proyectManager.GetProjects(studentID)};
+
 }).WithName("myProjects");
 
 app.MapPost("/TeamHub/Projects/SaveProject", (IProjectManager proyectManager, ProjectDTO project) =>
@@ -94,7 +102,6 @@ public sealed class HttpClientsAuthHelper : DelegatingHandler
         }
         else
         {
-            // Log the missing token for debugging purposes
             Console.WriteLine("Token is null");
         }
 

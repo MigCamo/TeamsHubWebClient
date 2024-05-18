@@ -1,0 +1,173 @@
+@page
+@model IndexModel
+@using TeamsHubWebClient.DTOs
+@using TeamsHubWebClient.SinglentonClasses; 
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    #back-arrow {
+        width: 24px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="date"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+    }
+
+    #user-email {
+        flex: 1;
+    }
+
+    #search-icon {
+        width: 24px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    #user-list {
+        margin-top: 20px;
+    }
+
+    .user-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .user-item img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+</style>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Proyecto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="https://cdn-icons-png.flaticon.com/512/4885/4885344.png" id="back-arrow" onclick="location.href='/'">
+        <h2>Crear nuevo proyecto</h2>
+        <form>
+            <div class="form-group">
+                <label for="project-name">Nombre del Proyecto</label>
+                <input type="text" id="project-name" name="project-name">
+            </div>
+            <div class="form-group">
+                <label for="start-date">Fecha de inicio del proyecto</label>
+                <input type="date" id="start-date" name="start-date">
+            </div>
+            <div class="form-group">
+                <label for="end-date">Fecha limite del proyecto</label>
+                <input type="date" id="end-date" name="end-date">
+            </div>
+            <div class="form-group">
+                <label for="user-email">Agregar Integrantes</label>
+                <div class="search-bar">
+                    <input type="text" id="user-email" name="user-email" placeholder="Ingresar correo del usuario">
+                    <img src="https://cdn-icons-png.flaticon.com/512/751/751381.png" alt="Buscar" id="search-icon" onclick="searchUser()">
+                </div>
+            </div>
+        </form>
+        <div id="user-list">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const users = [
+            { email: 'miguel@example.com', name: 'Miguel Angel Camo Rincón' },
+            { email: 'juan@example.com', name: 'Juan Perez' },
+            { email: 'maria@example.com', name: 'Maria Gomez' }
+        ];
+
+        window.searchUser = function() {
+            const emailInput = document.getElementById('user-email').value;
+            const userList = document.getElementById('user-list');
+            userList.innerHTML = '';
+
+            const filteredUsers = users.filter(user => user.email.includes(emailInput));
+
+            filteredUsers.forEach(user => {
+                const userItem = document.createElement('div');
+                userItem.classList.add('user-item');
+
+                const userImg = document.createElement('img');
+                userImg.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135755.png'; 
+                userImg.alt = 'User Image';
+
+                const userName = document.createElement('span');
+                userName.textContent = user.name;
+
+                userItem.appendChild(userImg);
+                userItem.appendChild(userName);
+
+                userList.appendChild(userItem);
+            });
+        };
+    });
+
+</script>
+

@@ -1,0 +1,396 @@
+@page
+@model TeamsHubWebClient.Pages.ActivitiesModule
+@{
+    Layout = null;
+    ViewData["Title"] = "Modulo de actividades";
+}
+
+<link href="/lib/fileinput/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+    }
+
+    .sidebar {
+        width: 60px;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+    .sidebar .icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .main-container {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        background-color: #d3d3d3;
+        padding: 10px 20px;
+        border-radius: 30px;
+        position: relative;
+    }
+
+    .header h1 {
+        font-family: 'Arial', sans-serif; 
+        font-size: 1.8em; 
+        font-weight: bold; 
+        color: #4b2d12;
+        margin: 0;
+        flex-grow: 1; 
+        text-align: left; 
+        margin-left: 20px; 
+    }
+
+    .header .back-arrow {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .new-activity-button {
+        background-color: black;
+        color: white;
+        border: none;
+        font-family: 'Arial', sans-serif; 
+        font-size: 1.3em; 
+        font-weight: bold; 
+        padding: 10px 20px;
+        border-radius: 40px;
+        cursor: pointer;
+        width: 250;
+        height: 50px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .new-activity-button:hover {
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .columns {
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    .column {
+        width: 30%;
+        background-color: #ddd;
+        border-radius: 30px;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .column h2 {
+        font-size: 1.2em;
+        color: white;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    #pending h2 {
+        background-color: #3498db;
+    }
+
+    #in-process h2 {
+        background-color: #2ecc71;
+    }
+
+    #completed h2 {
+        background-color: #e74c3c;
+    }
+
+    .activities .card {
+        background-color: white;
+        border-radius: 18px;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card .progress-bar {
+        height: 8px;
+        width: 80px;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+
+    .card .progress-bar.pending {
+        background-color: #3498db;
+    }
+
+    .card .progress-bar.in-process {
+        background-color: #2ecc71;
+    }
+
+    .card .progress-bar.completed {
+        background-color: #e74c3c;
+    }
+
+    .card h3 {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .close-button {
+        float: right;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    form label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    form input,
+    form textarea,
+    form select {
+        width: 100%;
+        padding: 5px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    form button {
+        margin-top: 10px;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    form button:first-of-type {
+        background-color: #2ecc71;
+        color: white;
+    }
+
+    form button:last-of-type {
+        background-color: #e74c3c;
+        color: white;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Actividades</title>
+    <link href="/lib/fileinput/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/5956/5956494.png" alt="Project Icon" class="icon"></a>
+        <a href="/ActivitiesModule"><img src="https://cdn-icons-png.flaticon.com/512/7891/7891841.png" alt="Task Icon" class="icon"></a>
+        <a href="/FileModule"><img src="https://cdn-icons-png.flaticon.com/512/14779/14779557.png" alt="Download Icon" class="icon"></a>
+        <a href="/Login"><img src="https://cdn-icons-png.flaticon.com/512/1716/1716282.png" alt="Exit Icon" class="icon"></a>
+    </div>
+
+    <div class="main-container">
+        <div class="header">
+            <img src="https://cdn-icons-png.flaticon.com/512/4885/4885344.png" alt="Back Arrow" class="back-arrow" onclick="goBack()">
+            <h1>Nombre del proyecto</h1>
+            <button class="new-activity-button" onclick="openForm()">Nueva Actividad</button>
+        </div>
+        <div class="columns">
+            <div class="column" id="pending">
+                <h2>Actividades Pendientes</h2>
+                <div class="activities" id="pending-activities"></div>
+            </div>
+            <div class="column" id="in-process">
+                <h2>Actividades en proceso</h2>
+                <div class="activities" id="in-process-activities"></div>
+            </div>
+            <div class="column" id="completed">
+                <h2>Actividades Terminadas</h2>
+                <div class="activities" id="completed-activities"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="activity-form" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeForm()">&times;</span>
+            <h2>Agregar/Editar Actividad</h2>
+            <form id="form">
+                <label for="name">Nombre de la Actividad:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="start-date">Fecha de inicio:</label>
+                <input type="date" id="start-date" name="start-date" required>
+
+                <label for="end-date">Fecha de cierre:</label>
+                <input type="date" id="end-date" name="end-date" required>
+
+                <label for="description">Descripción:</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="person">Persona responsable:</label>
+                <input type="text" id="person" name="person" required>
+
+                <label for="status">Estado:</label>
+                <select id="status" name="status" required>
+                    <option value="pending">Pendiente</option>
+                    <option value="in-process">En proceso</option>
+                    <option value="completed">Terminada</option>
+                </select>
+
+                <button type="button" onclick="saveActivity()">Guardar</button>
+                <button type="button" onclick="closeForm()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let activities = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadActivities();
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function openForm(activity = null) {
+            document.getElementById('activity-form').style.display = 'flex';
+            if (activity) {
+                document.getElementById('name').value = activity.name;
+                document.getElementById('start-date').value = activity.startDate;
+                document.getElementById('end-date').value = activity.endDate;
+                document.getElementById('description').value = activity.description;
+                document.getElementById('person').value = activity.person;
+                document.getElementById('status').value = activity.status;
+            } else {
+                document.getElementById('form').reset();
+                document.getElementById('status').value = 'pending';
+            }
+        }
+
+        function closeForm() {
+            document.getElementById('activity-form').style.display = 'none';
+        }
+
+        function saveActivity() {
+            const name = document.getElementById('name').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            const description = document.getElementById('description').value;
+            const person = document.getElementById('person').value;
+            const status = document.getElementById('status').value;
+
+            const newActivity = {
+                name,
+                startDate,
+                endDate,
+                description,
+                person,
+                status
+            };
+
+            activities.push(newActivity);
+            closeForm();
+            renderActivities();
+        }
+
+        function loadActivities() {
+            activities = [
+                { name: "Actividad 1", startDate: "2024-05-01", endDate: "2024-05-05", description: "Descripción 1", person: "Persona 1", status: "pending" },
+                { name: "Actividad 2", startDate: "2024-05-02", endDate: "2024-05-06", description: "Descripción 2", person: "Persona 2", status: "in-process" },
+                { name: "Actividad 3", startDate: "2024-05-03", endDate: "2024-05-07", description: "Descripción 3", person: "Persona 3", status: "completed" }
+            ];
+            renderActivities();
+        }
+
+        function renderActivities() {
+            const pendingContainer = document.getElementById('pending-activities');
+            const inProcessContainer = document.getElementById('in-process-activities');
+            const completedContainer = document.getElementById('completed-activities');
+
+            pendingContainer.innerHTML = '';
+            inProcessContainer.innerHTML = '';
+            completedContainer.innerHTML = '';
+
+            activities.forEach(activity => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+                    <div class="progress-bar ${activity.status}"></div>
+                    <h3>${activity.name}</h3>
+                    <p><strong>Inicio:</strong> ${activity.startDate}</p>
+                    <p><strong>Cierre:</strong> ${activity.endDate}</p>
+                `;
+                card.onclick = () => openForm(activity);
+
+                if (activity.status === 'pending') {
+                    pendingContainer.appendChild(card);
+                } else if (activity.status === 'in-process') {
+                    inProcessContainer.appendChild(card);
+                } else if (activity.status === 'completed') {
+                    completedContainer.appendChild(card);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
