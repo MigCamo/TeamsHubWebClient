@@ -13,17 +13,12 @@ builder.Services.AddScoped<IProjectManager, ProjectManagerRESTProvider>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientsAuthHelper>();
 
-builder.Services.AddHttpClient("UserIdentityService", client => {
-    var userIdentityService = builder.Configuration.GetSection("Services")["serviciosAPI"];
-    client.BaseAddress = new Uri(userIdentityService);
-    client.DefaultRequestHeaders.Add("accept", "application/json");
-}).AddHttpMessageHandler<HttpClientsAuthHelper>();;
 
-builder.Services.AddHttpClient("ProjectService", client => {
-    var projectService = builder.Configuration.GetSection("Services")["serviciosAPI"];
-    client.BaseAddress = new Uri(projectService);
-    client.DefaultRequestHeaders.Add("accept", "application/json");    
-}).AddHttpMessageHandler<HttpClientsAuthHelper>();;
+builder.Services.AddHttpClient("ApiGateWay", client => {
+    var apiGateWayUrl = builder.Configuration.GetSection("Services")["apiGateWay"];
+    client.BaseAddress = new Uri(apiGateWayUrl);
+    client.DefaultRequestHeaders.Add("accept", "application/json");
+});
 
 builder.Services.AddSession(options =>
 {

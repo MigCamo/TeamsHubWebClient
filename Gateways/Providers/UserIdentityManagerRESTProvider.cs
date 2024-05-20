@@ -10,7 +10,7 @@ public class UserIdentityManagerRESTProvider : IUserIdentityManager
     ILogger<UserIdentityManagerRESTProvider> iLogger;
     public UserIdentityManagerRESTProvider(IHttpClientFactory httpClientFactory)
     {
-        clientUserIdentityService = httpClientFactory.CreateClient("UserIdentityService");
+        clientUserIdentityService = httpClientFactory.CreateClient("ApiGateWay");
         this.iLogger = iLogger;
     }
 

@@ -8,23 +8,23 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Migue\\.nuget\\packages\\": {},
-    "D:\\Archivos Programas\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\yusgu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Workspace-C#\\TeamsHubWebClient\\TeamsHubWebClient.csproj",
+      "projectUniqueName": "C:\\Users\\yusgu\\Documents\\UV\\6to Semestre\\SRED\\ProyectoFinalServer\\TeamsHubWebClient\\TeamsHubWebClient.csproj",
       "projectName": "TeamsHubWebClient",
-      "projectPath": "D:\\Workspace-C#\\TeamsHubWebClient\\TeamsHubWebClient.csproj",
-      "packagesPath": "C:\\Users\\Migue\\.nuget\\packages\\",
-      "outputPath": "D:\\Workspace-C#\\TeamsHubWebClient\\obj\\",
+      "projectPath": "C:\\Users\\yusgu\\Documents\\UV\\6to Semestre\\SRED\\ProyectoFinalServer\\TeamsHubWebClient\\TeamsHubWebClient.csproj",
+      "packagesPath": "C:\\Users\\yusgu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yusgu\\Documents\\UV\\6to Semestre\\SRED\\ProyectoFinalServer\\TeamsHubWebClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Archivos Programas\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Migue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yusgu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -45,11 +45,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -74,7 +69,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
