@@ -1,4 +1,5 @@
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Mvc;
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
 
@@ -9,6 +10,7 @@ builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddScoped<IUserIdentityManager, UserIdentityManagerRESTProvider>();
 builder.Services.AddScoped<IProjectManager, ProjectManagerRESTProvider>();
+builder.Services.AddScoped<ITaskManager, TaskManagerRESTProvider>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientsAuthHelper>();
@@ -49,16 +51,23 @@ app.MapGet("/TeamHub/Projects/MyProjects/{startDate?}/{endDate?}", (IProjectMana
     }
     else
     {
-        return new { data = proyectManager.GetProjects(1)};
+        return null;
     }
 
 }).WithName("myProjectsbyDate");
 
-app.MapGet("/TeamHub/Projects/MyProjects/{studentID}", (IProjectManager proyectManager, int studentID) =>
+app.MapGet("/TeamHub/Projects/MyProjects/{idStudent}", (IProjectManager proyectManager, int idStudent) =>
 {     
-        return new { data = proyectManager.GetProjects(studentID)};
+        return new { data = proyectManager.GetAllMyProjects(idStudent)};
 
 }).WithName("myProjects");
+
+app.MapGet("/TeamHub/Task/{IdProject}", ([FromServices] ITaskManager taskManager, [FromRoute] int IdProject) =>
+{     
+        return new { data = taskManager.GetAllTaskByProject(IdProject)};
+
+}).WithName("GetAllTaskByProject");
+
 
 app.MapPost("/TeamHub/Projects/SaveProject", (IProjectManager proyectManager, ProjectDTO project) =>
 {            

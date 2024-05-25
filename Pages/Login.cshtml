@@ -7,31 +7,45 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Animated Login Form 02</title>
-        <link rel="stylesheet" href="/css/Style.css" asp-append-version="true" />
-    </head>
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
-    <div class="box">
-        <span class="borderLine"></span>
-        <form method="post">
-            <h2>Sign in</h2>
-            <div class="inputBox">
-                <input type="email" required="required" asp-for="@Model.sessionLoginRequest.Email">
-                <span>Username</span>
-                <i></i>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/loginStyles.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="container">
+            <img src="https://lh6.googleusercontent.com/kHApa0SppVtQ3WMkKwM_qBGjF44KnkKtwDPts2GQTLxbQjkDXjz7IJ2Xbo4wEIlVXCUsEWzJXVl5DkhBdOusixZRABGrgcFVP4k8rs7fzg7uyz7DW_0jIJ8zVXnqWUtCMg=w1280"
+                alt="Team Hub" class="logo">
+            <div class="overlay">
+                <div class="form-container">
+                    <form method="post">
+                        <h1 class="title">Sign in</h1>
+                        <p class="subtitle">Por favor ingrese su correo y contraseña</p>
+                        <div class="input-group">
+                            <img src="https://lh4.googleusercontent.com/GM9kjyf-q4dY35RoKjVLEWolH7fwtbpr-dWRuF7T8ByULfiQaAFrsop7tkUws1UJpvX7LEDmdh9mELKveyyZCao=w1280"
+                                alt="Email Icon" class="icon">
+                            <input type="text" placeholder="Email" class="input" id="txtEmail" required="required"
+                                asp-for="@Model.sessionLoginRequest.Email">
+                        </div>
+                        <div class="input-group">
+                            <img src="https://lh3.googleusercontent.com/dMCHQZ8MVhZqDQxF7PbcW7gdGcfN8KOdDU_rAzcmHlIFKzj9vMP-zgCot6rkSPjvnll82ko2INFRRppG5_Ms2BM=w1280"
+                                alt="Password Icon" class="icon">
+                            <input type="password" placeholder="Password" class="input" id="txtPassword"
+                                required="required" asp-for="@Model.sessionLoginRequest.Password">
+                            <label for="showPassword" class="show-password">Mostrar</label>
+                        </div>
+                        <button class="sign-in-button" type="submit" value="login">Sign in</button>
+                    </form>
+                </div>
             </div>
-            <div class="inputBox">
-                <input type="password" required="required" asp-for="@Model.sessionLoginRequest.Password">
-                <span>Password</span>
-                <i></i>
-            </div>
-            <div class="links">
-                <a href="/">Forgot Password</a>
-                <a href="/">Signup</a>
-            </div>
-            <input type="submit" value="login">
-        </form>
+            <p class="register-text">¿Aun no cuentas con una cuenta? <a href="#">Registrarse aquí</a></p>
+            <p class="forgot-password"><a href="#">¿Olvidaste tu contraseña?</a></p>
+        </div>
+    </div>
 </body>
 
+</html>

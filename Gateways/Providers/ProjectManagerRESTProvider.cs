@@ -1,5 +1,6 @@
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
+using TeamsHubWebClient.SinglentonClasses;
 
 public class ProjectManagerRESTProvider : IProjectManager
 {
@@ -11,7 +12,7 @@ public class ProjectManagerRESTProvider : IProjectManager
         IHttpClientFactory httpClientFactory) 
     {
             _logger = logger;
-            clientServiceProjects = httpClientFactory.CreateClient("ProjectService");
+            clientServiceProjects = httpClientFactory.CreateClient("ApiGateWay");
     } 
 
     public bool AddProject(ProjectDTO project)
@@ -29,11 +30,11 @@ public class ProjectManagerRESTProvider : IProjectManager
         }
     }
 
-    public List<ProjectDTO> GetProjects(int studentID)
+    public List<ProjectDTO> GetAllMyProjects(int idStudent)
     {
         try
         {
-            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/MyProjects/{studentID}").Result;
+            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/MyProjects/{StudentSinglenton.Id}").Result;
             result.EnsureSuccessStatusCode();
             var response = result.Content.ReadFromJsonAsync<List<ProjectDTO>>().Result;
             return response;

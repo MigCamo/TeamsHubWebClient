@@ -9,55 +9,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TeamsHubWebClient
 build_property.RootNamespace = TeamsHubWebClient
-build_property.ProjectDir = C:\Users\yusgu\Documents\UV\6to Semestre\SRED\ProyectoFinalServer\TeamsHubWebClient\
+build_property.ProjectDir = d:\Migue\.onedrive\OneDrive - Universidad Veracruzana\Escritorio\Workspace-Teamhub\TeamsHubWebClient\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\yusgu\Documents\UV\6to Semestre\SRED\ProyectoFinalServer\TeamsHubWebClient
+build_property.MSBuildProjectDirectory = d:\Migue\.onedrive\OneDrive - Universidad Veracruzana\Escritorio\Workspace-Teamhub\TeamsHubWebClient
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/ActivitiesModule.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/ActivitiesModule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWN0aXZpdGllc01vZHVsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/Error.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/FileModule.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/FileModule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsZU1vZHVsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/GeneralProjectChat.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/GeneralProjectChat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VuZXJhbFByb2plY3RDaGF0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/Index.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/Login.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/ProjectForm.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/ProjectForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvamVjdEZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/_ViewImports.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/_ViewStart.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/yusgu/Documents/UV/6to Semestre/SRED/ProyectoFinalServer/TeamsHubWebClient/Pages/Shared/_Layout.cshtml]
+[d:/Migue/.onedrive/OneDrive - Universidad Veracruzana/Escritorio/Workspace-Teamhub/TeamsHubWebClient/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-u9t0qqm6o6

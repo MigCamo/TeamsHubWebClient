@@ -5,212 +5,12 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyectos</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            padding: 20px;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            font-size: 2em;
-            color: #4b2d12;
-            font-weight: bold;
-        }
-
-        .header-buttons {
-            display: flex;
-            align-items: center;
-        }
-
-        .new-project-button {
-            background-color: black;
-            color: white;
-            border: none;
-            font-family: 'Arial', sans-serif; 
-            font-size: 1.3em; 
-            font-weight: bold; 
-            padding: 10px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            width: 250;
-            height: 50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-right: 50px;
-        }
-
-        .new-project-button:hover {
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .user-button {
-            position: relative;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .user-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: white;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .dropdown-content button {
-            width: 100%;
-            padding: 10px 20px;
-            border: none;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .dropdown-content button:hover {
-            background-color: #e0e0e0;
-        }
-
-        .dropdown-content .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-        }
-
-        .user-button:hover .dropdown-content {
-            display: block;
-        }
-
-        .projects-list {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            overflow-y: auto;
-        }
-
-        .project-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #e0e0e0;
-            padding: 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .project-info img {
-            width: 100px;
-            height: 100px;
-            margin-right: 30px;
-        }
-
-        .project-info h2 {
-            font-size: 1.7em;
-            margin-top: 15px;;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .project-info p {
-            font-weight: bold;
-        }
-
-        .project-info p span {
-            font-weight: normal;
-        }
-
-        .project-status {
-            text-align: right;
-            font-family: 'Arial', sans-serif;
-            font-size: 1.5em;
-        }
-
-        .project-status p {
-            font-weight: bold;
-        }
-
-        .project-status p span {
-            font-weight: normal;
-        }
-
-        .details-button {
-            background-color: black;
-            color: white;
-            border: none;
-            font-family: 'Arial', sans-serif; 
-            font-size: .8em; 
-            font-weight: bold; 
-            padding: 10px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            width: 250;
-            height: 45px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 5px;
-        }
-
-        .details-button:hover {
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .projects-list {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            overflow-y: auto; 
-            scrollbar-width: none; 
-            -ms-overflow-style: none; 
-        }
-
-        .projects-list::-webkit-scrollbar {
-            display: none; 
-        }
-
-    </style>
+    <link rel="stylesheet" href="/css/indexStyles.css">
 </head>
 
 <body>
@@ -220,68 +20,49 @@
             <div class="header-buttons">
                 <button class="new-project-button" onclick="location.href='/ProjectForm'">Nuevo Proyecto</button>
                 <div class="user-button">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Icon" class="user-icon">
-                    <span>Nombre usuario</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Icon"
+                        class="user-icon">
+                    <span>@StudentSinglenton.FullName</span>
                     <div class="dropdown-content">
                         <button onclick="location.href='/Login'">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Icon" class="icon"> Mi perfil
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Icon"
+                                class="icon"> Mi perfil
                         </button>
                         <button onclick="location.href='/Login'">
-                            <img src="https://cdn-icons-png.flaticon.com/512/603/603120.png" alt="Logout Icon" class="icon"> Log out
+                            <img src="https://cdn-icons-png.flaticon.com/512/603/603120.png" alt="Logout Icon"
+                                class="icon"> Log out
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="projects-list" id="projects-list">
+        <div class="projects-list column">
+            @if (Model.listaCursos != null)
+            {
+                @foreach (var project in Model.listaCursos)
+                {
+                    <div class="project-card">
+                        <div class="project-info">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4946/4946348.png" alt="Project Icon">
+                            <div>
+                                <h2>@project.Name</h2>
+                                <p><span>Fecha de inicio:</span> @project.StartDate</p>
+                                <p><span>Fecha de cierre:</span> @project.EndDate</p>
+                            </div>
+                        </div>
+                        <div class="project-status">
+                            <p>Estatus: <span>Activo</span></p>
+                            <form method="post" asp-page-handler="Move">
+                                <input type="hidden" name="IdProject" value="@project.IdProject" />
+                                <input type="hidden" name="NameProject" value="@project.Name" />
+                                <button type="submit" class="details-button">Ver detalles</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
-    <script src="scripts.js"></script>
 </body>
+
 </html>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const projects = [
-            { name: 'Proyecto 1', startDate: '01/01/2023', endDate: '12/31/2023', status: 'Activo' },
-            { name: 'Proyecto 2', startDate: '02/01/2023', endDate: '11/30/2023', status: 'Activo' },
-            { name: 'Proyecto 3', startDate: '03/01/2023', endDate: '10/31/2023', status: 'Activo' },
-            { name: 'Proyecto 4', startDate: '04/01/2023', endDate: '09/30/2023', status: 'Activo' },
-            { name: 'Proyecto 5', startDate: '05/01/2023', endDate: '08/31/2023', status: 'Activo' },
-            { name: 'Proyecto 6', startDate: '06/01/2023', endDate: '07/31/2023', status: 'Activo' },
-            { name: 'Proyecto 7', startDate: '07/01/2023', endDate: '06/30/2023', status: 'Activo' },
-            { name: 'Proyecto 8', startDate: '08/01/2023', endDate: '05/31/2023', status: 'Activo' },
-            { name: 'Proyecto 9', startDate: '09/01/2023', endDate: '04/30/2023', status: 'Activo' },
-            { name: 'Proyecto 10', startDate: '10/01/2023', endDate: '03/31/2023', status: 'Activo' },
-            { name: 'Proyecto 11', startDate: '11/01/2023', endDate: '02/29/2024', status: 'Activo' },
-            { name: 'Proyecto 12', startDate: '12/01/2023', endDate: '01/31/2024', status: 'Activo' },
-            { name: 'Proyecto 13', startDate: '01/01/2024', endDate: '12/31/2024', status: 'Activo' },
-            { name: 'Proyecto 14', startDate: '02/01/2024', endDate: '11/30/2024', status: 'Activo' },
-            { name: 'Proyecto 15', startDate: '03/01/2024', endDate: '10/31/2024', status: 'Activo' },
-        ];
-
-        const projectsList = document.getElementById('projects-list');
-
-        projects.forEach(project => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
-
-            projectCard.innerHTML = `
-                <div class="project-info">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4946/4946348.png" alt="Project Icon">
-                    <div>
-                        <h2>${project.name}</h2>
-                        <p><span>Fecha de inicio:</span> ${project.startDate}</p>
-                        <p><span>Fecha de cierre:</span> ${project.endDate}</p>
-                    </div>
-                </div>
-                <div class="project-status">
-                    <p>Estatus: <span>${project.status}</span></p>
-                    <button class="details-button" onclick="location.href='/GeneralProjectChat'">Ver detalles</button>
-                </div>
-            `;
-
-            projectsList.appendChild(projectCard);
-        });
-    });
-</script>

@@ -11,6 +11,8 @@ namespace TeamsHubWebClient.Pages
         private readonly ILogger<LoginModel> _logger;
         private readonly IUserIdentityManager _UserIdentityManager;
 
+        public readonly IProjectManager _ProjectManager;
+
         [BindProperty]
         public SessionLoginRequest sessionLoginRequest {get; set;}
 

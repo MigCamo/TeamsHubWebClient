@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
+using TeamsHubWebClient.SinglentonClasses;
 
 namespace TeamsHubWebClient.Pages
 {
@@ -18,7 +19,6 @@ namespace TeamsHubWebClient.Pages
         public DateTime EndDate {get; set;}
         [BindProperty]
         public ProjectDTO Project {get; set;}  
-
         public bool errorGuardandoCurso { get; set; }
         public bool mostrarCurso { get; set; }
         public List<ProjectDTO> listaCursos {get; set;}       
@@ -34,13 +34,21 @@ namespace TeamsHubWebClient.Pages
         {
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
-            listaCursos = _projectManager.GetProjects(1);            
+            listaCursos = _projectManager.GetAllMyProjects(StudentSinglenton.Id);            
         }
 
         public void OnPostFechas() {                        
             listaCursos = _projectManager.GetProjectsbyDate(StartDate, EndDate);        
         }
 
+        public IActionResult OnPostMove(int IdProject, string NameProject)
+        {
+            ProjectSinglenton.Id = IdProject;
+            ProjectSinglenton.Name = NameProject;
+            return RedirectToPage("/ActivitiesModule");
+        }
+
+        
         public void OnPostCurso() {
             bool resultado = false;
             
@@ -57,13 +65,13 @@ namespace TeamsHubWebClient.Pages
             }           
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
-            listaCursos = _projectManager.GetProjects(1);            
+            listaCursos = _projectManager.GetAllMyProjects(StudentSinglenton.Id);           
         }
 
         public void OnPostConsultarCurso() {                                                        
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
-            listaCursos = _projectManager.GetProjects(1);  
+            listaCursos = _projectManager.GetAllMyProjects(StudentSinglenton.Id);     
             
             Project = listaCursos.FirstOrDefault(c => c.IdProject == Project.IdProject);
             
