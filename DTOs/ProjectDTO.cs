@@ -11,6 +11,9 @@ public partial class ProjectDTO
 
     public DateTime? EndDate { get; set; }
 
+    public int IdStudent { get; set; }
+    public string Status { get; set; }
+
     public string GetStartDate
     {
         get

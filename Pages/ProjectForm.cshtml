@@ -1,7 +1,7 @@
 @page
-@model IndexModel
+@model ProjectFormModel
 @using TeamsHubWebClient.DTOs
-@using TeamsHubWebClient.SinglentonClasses; 
+@using TeamsHubWebClient.SinglentonClasses;
 
 <style>
     body {
@@ -45,7 +45,8 @@
         margin-bottom: 5px;
     }
 
-    input[type="text"], input[type="date"] {
+    input[type="text"],
+    input[type="date"] {
         width: calc(100% - 20px);
         padding: 8px;
         margin-bottom: 10px;
@@ -89,48 +90,73 @@
         border-radius: 50%;
         margin-right: 10px;
     }
-
 </style>
 
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Nuevo Proyecto</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <img src="https://cdn-icons-png.flaticon.com/512/4885/4885344.png" id="back-arrow" onclick="location.href='/'">
         <h2>Crear nuevo proyecto</h2>
-        <form>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" id="project-id" name="projectDTO.Id" asp-for="projectDTO.IdProject" />
+            <input type="hidden" id="project-id-student" name="projectDTO.IdStudent" asp-for="projectDTO.IdStudent" />
+
             <div class="form-group">
-                <label for="project-name">Nombre del Proyecto</label>
-                <input type="text" id="project-name" name="project-name">
+                <label asp-for="projectDTO.Name">Nombre del Proyecto</label>
+                <input asp-for="projectDTO.Name" class="form-control" />
+                <span asp-validation-for="projectDTO.Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label for="start-date">Fecha de inicio del proyecto</label>
-                <input type="date" id="start-date" name="start-date">
+                <label asp-for="projectDTO.StartDate">Fecha de inicio del proyecto</label>
+                <input asp-for="projectDTO.StartDate" class="form-control" type="date" />
+                <span asp-validation-for="projectDTO.StartDate" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label for="end-date">Fecha limite del proyecto</label>
-                <input type="date" id="end-date" name="end-date">
+                <label asp-for="projectDTO.EndDate">Fecha limite del proyecto</label>
+                <input asp-for="projectDTO.EndDate" class="form-control" type="date" />
+                <span asp-validation-for="projectDTO.EndDate" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="projectDTO.Status">Estado</label>
+                <select asp-for="projectDTO.Status" class="form-control" id="project-status">
+                    <option value="Activo">Activo</option>
+                    <option value="Terminado">Terminado</option>
+                </select>
+                <span asp-validation-for="projectDTO.Status" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label for="user-email">Agregar Integrantes</label>
                 <div class="search-bar">
-                    <input type="text" id="user-email" name="user-email" placeholder="Ingresar correo del usuario">
-                    <img src="https://cdn-icons-png.flaticon.com/512/751/751381.png" alt="Buscar" id="search-icon" onclick="searchUser()">
+                    <input type="text" id="user-email" name="user-email" placeholder="Ingresar correo del usuario"
+                        class="form-control">
+                    <img src="https://cdn-icons-png.flaticon.com/512/751/751381.png" alt="Buscar" id="search-icon"
+                        onclick="searchUser()">
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
+
         <div id="user-list">
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
 
 
@@ -143,7 +169,7 @@
             { email: 'maria@example.com', name: 'Maria Gomez' }
         ];
 
-        window.searchUser = function() {
+        window.searchUser = function () {
             const emailInput = document.getElementById('user-email').value;
             const userList = document.getElementById('user-list');
             userList.innerHTML = '';
@@ -155,7 +181,7 @@
                 userItem.classList.add('user-item');
 
                 const userImg = document.createElement('img');
-                userImg.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135755.png'; 
+                userImg.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135755.png';
                 userImg.alt = 'User Image';
 
                 const userName = document.createElement('span');
@@ -170,4 +196,3 @@
     });
 
 </script>
-

@@ -59,8 +59,14 @@ app.MapGet("/TeamHub/Projects/MyProjects/{startDate?}/{endDate?}", (IProjectMana
 app.MapGet("/TeamHub/Projects/MyProjects/{idStudent}", (IProjectManager proyectManager, int idStudent) =>
 {     
         return new { data = proyectManager.GetAllMyProjects(idStudent)};
-
+        
 }).WithName("myProjects");
+
+app.MapGet("/TeamHub/Projects/{idProject}", (IProjectManager proyectManager, int idProject) =>
+{     
+        return new { data = proyectManager.GetProject(idProject)};
+
+}).WithName("obtenerProyecto");
 
 app.MapGet("/TeamHub/Task/{IdProject}", ([FromServices] ITaskManager taskManager, [FromRoute] int IdProject) =>
 {     
@@ -68,22 +74,32 @@ app.MapGet("/TeamHub/Task/{IdProject}", ([FromServices] ITaskManager taskManager
 
 }).WithName("GetAllTaskByProject");
 
-
-app.MapPost("/TeamHub/Projects/SaveProject", (IProjectManager proyectManager, ProjectDTO project) =>
+app.MapPost("/TeamHub/Task/", (ITaskManager taskManager, TaskDTO taskDTO) =>
 {            
     bool result = false;
 
-    if (project.IdProject == 0)
+    if (taskDTO.IdTask == 0)
     {
-        result = proyectManager.AddProject(project);
+        taskManager.AddTask(taskDTO);
+        result = true;
     }
-    else
+
+    return result;     
+
+}).WithName("AgregarTarea");
+
+app.MapPost("/TeamHub/Task/up", (ITaskManager taskManager, TaskDTO taskDTO) =>
+{            
+    bool result = false;
+
+    if (taskDTO.IdTask != 0)
     {
-        result = proyectManager.UpdateProject(project); 
-    }   
+        taskManager.UpdateTask(taskDTO);
+        result = true;
+    }    
 
     return result;       
-}).WithName("SaveProject");
+}).WithName("ModificarTarea");
 
 app.MapRazorPages();
 app.Run();

@@ -26,8 +26,8 @@ body, html {
 
 .logo {
     width: 397px;
-    height: 108px;
-    margin-bottom: 20px; /* Ajusta la distancia del logo al cuadro */
+    height: 208px;
+    margin-bottom: 15px; /* Ajusta la distancia del logo al cuadro */
 }
 
 .overlay {

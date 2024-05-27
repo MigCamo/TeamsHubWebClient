@@ -29,6 +29,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "d:\\Migue\\.onedrive\\OneDrive - Universidad Veracruzana\\Escritorio\\Workspace-Teamhub\\TeamsHubWebClient\\wwwroot\\images\\ICON-EMAIL.png",
+      "PackagePath": "staticwebassets\\images\\ICON-EMAIL.png"
+    },
+    {
+      "Id": "d:\\Migue\\.onedrive\\OneDrive - Universidad Veracruzana\\Escritorio\\Workspace-Teamhub\\TeamsHubWebClient\\wwwroot\\images\\ICON-PASSWORD.png",
+      "PackagePath": "staticwebassets\\images\\ICON-PASSWORD.png"
+    },
+    {
+      "Id": "d:\\Migue\\.onedrive\\OneDrive - Universidad Veracruzana\\Escritorio\\Workspace-Teamhub\\TeamsHubWebClient\\wwwroot\\images\\Team_Hub-removebg-preview.png",
+      "PackagePath": "staticwebassets\\images\\Team_Hub-removebg-preview.png"
+    },
+    {
       "Id": "d:\\Migue\\.onedrive\\OneDrive - Universidad Veracruzana\\Escritorio\\Workspace-Teamhub\\TeamsHubWebClient\\wwwroot\\images\\carpeta.png",
       "PackagePath": "staticwebassets\\images\\carpeta.png"
     },
@@ -39,10 +51,6 @@
     {
       "Id": "d:\\Migue\\.onedrive\\OneDrive - Universidad Veracruzana\\Escritorio\\Workspace-Teamhub\\TeamsHubWebClient\\wwwroot\\images\\lista-de-quehaceres.png",
       "PackagePath": "staticwebassets\\images\\lista-de-quehaceres.png"
-    },
-    {
-      "Id": "d:\\Migue\\.onedrive\\OneDrive - Universidad Veracruzana\\Escritorio\\Workspace-Teamhub\\TeamsHubWebClient\\wwwroot\\images\\logo.png",
-      "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
       "Id": "d:\\Migue\\.onedrive\\OneDrive - Universidad Veracruzana\\Escritorio\\Workspace-Teamhub\\TeamsHubWebClient\\wwwroot\\images\\proyecto.png",
