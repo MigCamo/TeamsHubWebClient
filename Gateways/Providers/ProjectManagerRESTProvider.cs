@@ -91,4 +91,36 @@ public class ProjectManagerRESTProvider : IProjectManager
             return false;
         }
     }
+
+    public ProjectDTO GetProject(int IdProject)
+    {
+        try
+        {
+            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/Project/{IdProject}").Result;
+            result.EnsureSuccessStatusCode();
+            var response = result.Content.ReadFromJsonAsync<ProjectDTO>().Result;
+            return response;    
+        }
+        catch (Exception ex)
+        {
+            _logger.LogInformation(ex.ToString());
+            return null;
+        }
+    }
+
+    public List<TaskDTO>? GetProjectTasksAsync(int idProject)
+    {
+        List<TaskDTO>? taskList = new List<TaskDTO>();
+        try
+        {
+            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/Project/Tasks/{idProject}").Result;            
+            result.EnsureSuccessStatusCode();
+            taskList = result.Content.ReadFromJsonAsync<List<TaskDTO>>().Result;
+        }
+        catch (Exception ex)
+        {
+            Console.Write(ex);
+        }
+        return taskList;
+    }
 }

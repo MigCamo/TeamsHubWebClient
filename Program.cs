@@ -2,6 +2,7 @@ using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
+using TeamsHubWebClient.Gateways.Providers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddScoped<IUserIdentityManager, UserIdentityManagerRESTProvider>();
 builder.Services.AddScoped<IProjectManager, ProjectManagerRESTProvider>();
 builder.Services.AddScoped<ITaskManager, TaskManagerRESTProvider>();
+builder.Services.AddScoped<IUserManager, UserManagerRESTProvider>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientsAuthHelper>();
