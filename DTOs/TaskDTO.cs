@@ -1,6 +1,3 @@
-
-namespace TeamsHubWebClient.DTOs;
-
 public partial class TaskDTO
 {
     public int IdTask { get; set; }
