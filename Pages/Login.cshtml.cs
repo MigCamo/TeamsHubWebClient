@@ -27,18 +27,22 @@ namespace TeamsHubWebClient.Pages
             
         }
 
-        public void OnPost() {
-            if (sessionLoginRequest != null) {
+        public IActionResult OnPost()
+        {
+            if (sessionLoginRequest != null)
+            {
                 _logger.LogInformation(sessionLoginRequest.Password);
                 var response = _UserIdentityManager.ValidateUser(sessionLoginRequest);
-                if (response.IsValid) {
+                if (response.IsValid)
+                {
                     HttpContext.Session.SetString("token_usuario", sessionLoginRequest.Email);
                     StudentSinglenton.Id = response.User.Id;
                     StudentSinglenton.Email = response.User.Email;
                     StudentSinglenton.FullName = response.User.FullName;
-                    Response.Redirect("/");
+                    return RedirectToPage("/Index");
                 }
             }
+            return Page();
         }
     }
 }
