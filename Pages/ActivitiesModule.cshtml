@@ -4,7 +4,7 @@
     Layout = null;
     ViewData["Title"] = "Modulo de actividades";
     var taskListJson = System.Text.Json.JsonSerializer.Serialize(Model.TaskList);
-    
+
 }
 <!DOCTYPE html>
 <html lang="es">
@@ -57,27 +57,27 @@
             <span class="close-button" onclick="closeForm()">&times;</span>
             <h2>Agregar/Editar Actividad</h2>
             <form method="post">
+                <input type="hidden" id="task-id" name="Task.IdTask" asp-for="Task.IdTask" />
                 <label for="name">Nombre de la Actividad:</label>
-                <input type="text" id="name" name="name" asp-for="@Model.Task.Name" required>
+                <input type="text" id="name" name="Task.Name" asp-for="Task.Name" required>
 
                 <label for="start-date">Fecha de inicio:</label>
-                <input type="date" id="start-date" name="start-date" asp-for="@Model.Task.StartDate" required>
+                <input type="date" id="start-date" name="Task.StartDate" asp-for="Task.StartDate" required>
 
                 <label for="end-date">Fecha de cierre:</label>
-                <input type="date" id="end-date" name="end-date" asp-for="@Model.Task.EndDate" required>
+                <input type="date" id="end-date" name="Task.EndDate" asp-for="Task.EndDate" required>
 
                 <label for="description">Descripción:</label>
-                <textarea id="description" name="description" asp-for="@Model.Task.Description" required></textarea>
+                <textarea id="description" name="Task.Description" asp-for="Task.Description" required></textarea>
 
                 <label for="status">Estado:</label>
-                <select id="status" name="status" required>
-                    <option value="Actividad Pendiente" asp-for="@Model.Task.Status" >Pendiente</option>
-                    <option value="Actividad en proceso" asp-for="@Model.Task.Status" >En proceso</option>
-                    <option value="Actividad Finalizada" asp-for="@Model.Task.Status" >Terminada</option>
+                <select id="status" name="Task.Status" asp-for="Task.Status" required>
+                    <option value="Actividad Pendiente">Pendiente</option>
+                    <option value="Actividad en proceso">En proceso</option>
+                    <option value="Actividad Finalizada">Terminada</option>
                 </select>
 
-                <button type="button" type="submit" value="Save" >Guardar</button>
-                <button type="button" type="submit" value="Cancel" >Cancelar</button>
+                <button type="submit">Guardar</button>
             </form>
         </div>
     </div>
@@ -91,12 +91,13 @@
         });
 
         function goBack() {
-            window.history.back();
+            RedirectToPage("/");
         }
 
         function openForm(activity = null) {
             document.getElementById('activity-form').style.display = 'flex';
             if (activity) {
+                document.getElementById('task-id').value = activity.id; // Asegúrate de que 'activity.id' sea el ID correcto
                 document.getElementById('name').value = activity.name;
                 document.getElementById('start-date').value = activity.startDate;
                 document.getElementById('end-date').value = activity.endDate;
@@ -104,9 +105,11 @@
                 document.getElementById('status').value = activity.status;
             } else {
                 document.getElementById('form').reset();
-                document.getElementById('status').value = 'pending';
+                document.getElementById('task-id').value = 0; // O el valor predeterminado para una nueva tarea
+                document.getElementById('status').value = 'Actividad Pendiente';
             }
         }
+
 
         function closeForm() {
             document.getElementById('activity-form').style.display = 'none';
@@ -134,6 +137,7 @@
 
         function loadActivities() {
             activities = TaskList.map(task => ({
+                id: task.IdTask, // Asegúrate de que 'task.IdTask' sea el campo correcto
                 name: task.Name,
                 startDate: task.StartDate ? new Date(task.StartDate).toISOString().split('T')[0] : '',
                 endDate: task.EndDate ? new Date(task.EndDate).toISOString().split('T')[0] : '',
@@ -145,6 +149,7 @@
 
             renderActivities();
         }
+
 
         function renderActivities() {
             const pendingContainer = document.getElementById('pending-activities');

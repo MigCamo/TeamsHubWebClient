@@ -13,54 +13,58 @@
     <link rel="stylesheet" href="/css/indexStyles.css">
 </head>
 
+<style src="/css/LoginStyles.css"></style>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Mi Espacio de trabajo</h1>
-            <div class="header-buttons">
-                <button class="new-project-button" onclick="location.href='/ProjectForm'">Nuevo Proyecto</button>
-                <div class="user-button">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Icon"
-                        class="user-icon">
-                    <span>@StudentSinglenton.FullName</span>
-                    <div class="dropdown-content">
-                        <button onclick="location.href='/Login'">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Icon"
-                                class="icon"> Mi perfil
-                        </button>
-                        <button onclick="location.href='/Login'">
-                            <img src="https://cdn-icons-png.flaticon.com/512/603/603120.png" alt="Logout Icon"
-                                class="icon"> Log out
-                        </button>
+    <div class="background">
+        <div class="container">
+            <div class="header">
+                <h1>Mi Espacio de trabajo</h1>
+                <div class="header-buttons">
+                    <button class="new-project-button" onclick="location.href='/ProjectForm'">Nuevo Proyecto</button>
+                    <div class="user-button">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Icon"
+                            class="user-icon">
+                        <span>@StudentSinglenton.FullName</span>
+                        <div class="dropdown-content">
+                            <button onclick="location.href='/Login'">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Icon"
+                                    class="icon"> Mi perfil
+                            </button>
+                            <button onclick="location.href='/Login'">
+                                <img src="https://cdn-icons-png.flaticon.com/512/603/603120.png" alt="Logout Icon"
+                                    class="icon"> Log out
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="projects-list column">
-            @if (Model.listaCursos != null)
-            {
-                @foreach (var project in Model.listaCursos)
+            <div class="projects-list column">
+                @if (Model.listaCursos != null)
                 {
-                    <div class="project-card">
-                        <div class="project-info">
-                            <img src="https://cdn-icons-png.flaticon.com/512/4946/4946348.png" alt="Project Icon">
-                            <div>
-                                <h2>@project.Name</h2>
-                                <p><span>Fecha de inicio:</span> @project.StartDate</p>
-                                <p><span>Fecha de cierre:</span> @project.EndDate</p>
+                    @foreach (var project in Model.listaCursos)
+                    {
+                        <div class="project-card">
+                            <div class="project-info">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4946/4946348.png" alt="Project Icon">
+                                <div>
+                                    <h2>@project.Name</h2>
+                                    <p><span>Fecha de inicio:</span> @project.StartDate</p>
+                                    <p><span>Fecha de cierre:</span> @project.EndDate</p>
+                                </div>
+                            </div>
+                            <div class="project-status">
+                                <p>Estatus: <span>Activo</span></p>
+                                <form method="post" asp-page-handler="Move">
+                                    <input type="hidden" name="IdProject" value="@project.IdProject" />
+                                    <input type="hidden" name="NameProject" value="@project.Name" />
+                                    <button type="submit" class="details-button">Ver detalles</button>
+                                </form>
                             </div>
                         </div>
-                        <div class="project-status">
-                            <p>Estatus: <span>Activo</span></p>
-                            <form method="post" asp-page-handler="Move">
-                                <input type="hidden" name="IdProject" value="@project.IdProject" />
-                                <input type="hidden" name="NameProject" value="@project.Name" />
-                                <button type="submit" class="details-button">Ver detalles</button>
-                            </form>
-                        </div>
-                    </div>
+                    }
                 }
-            }
+            </div>
         </div>
     </div>
 </body>

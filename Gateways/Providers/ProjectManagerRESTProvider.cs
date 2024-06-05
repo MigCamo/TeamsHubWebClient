@@ -1,6 +1,8 @@
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
 using TeamsHubWebClient.SinglentonClasses;
+using System.Text;
+using System.Text.Json;
 
 public class ProjectManagerRESTProvider : IProjectManager
 {
@@ -15,11 +17,12 @@ public class ProjectManagerRESTProvider : IProjectManager
             clientServiceProjects = httpClientFactory.CreateClient("ApiGateWay");
     } 
 
-    public bool AddProject(ProjectDTO project)
+    public bool AddProject(ProjectDTO project, int idStudent)
     {
         try
         {
-            var result = clientServiceProjects.PostAsJsonAsync($"/TeamHub/Projects/AddProject", project).Result;
+            var request = new { ProjectNew = project, StudentID = idStudent };
+            var result = clientServiceProjects.PostAsJsonAsync($"/TeamHub/Projects/AddProject", request).Result;
             result.EnsureSuccessStatusCode();
             var response = result.Content.ReadFromJsonAsync<Boolean>().Result;
             return response;
@@ -29,7 +32,6 @@ public class ProjectManagerRESTProvider : IProjectManager
             return false;
         }
     }
-
     public List<ProjectDTO> GetAllMyProjects(int idStudent)
     {
         try
@@ -44,7 +46,20 @@ public class ProjectManagerRESTProvider : IProjectManager
             return null;
         }
     }
-
+    public ProjectDTO GetProject(int idProject)
+    {
+        try
+        {
+            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/{idProject}").Result;
+            result.EnsureSuccessStatusCode();
+            var response = result.Content.ReadFromJsonAsync<ProjectDTO>().Result;
+            return response;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+    }
     public List<ProjectDTO> GetProjectsbyDate(DateTime startDate, DateTime endDate)
     {
         try {                        
@@ -58,25 +73,21 @@ public class ProjectManagerRESTProvider : IProjectManager
             return null;
         }
     }
-
     public bool RemoveProject(ProjectDTO project)
     {
         return true;
     }
-
     public bool UpdateProject(ProjectDTO projectNew)
     {
         try
         {
-            _logger.LogInformation(projectNew.ToString()); 
-            var result = clientServiceProjects.PutAsJsonAsync($"/TeamHub/Projects/UpdateProject", projectNew).Result;
+            var result = clientServiceProjects.PostAsJsonAsync($"/TeamHub/Projects/UpdateProject", projectNew).Result;
             result.EnsureSuccessStatusCode();
             var response = result.Content.ReadFromJsonAsync<Boolean>().Result;
             return response;
         }
         catch (Exception ex)
         {
-            _logger.LogInformation(ex.ToString());
             return false;
         }
     }
