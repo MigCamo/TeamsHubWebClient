@@ -36,9 +36,7 @@ namespace TeamsHubWebClient.Pages
         {
             StudentList = _UserManager.getStudentsByProject(ProjectSinglenton.Id);
             ProjectData = _ProjectManager.GetProject(ProjectSinglenton.Id);
-            Console.WriteLine(ProjectData.Name);
             ProjectTask = _ProjectManager.GetProjectTasksAsync(ProjectSinglenton.Id); 
-            Console.WriteLine(ProjectTask.Count);
         }
 
         public void OnPost() {

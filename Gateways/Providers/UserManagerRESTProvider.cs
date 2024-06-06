@@ -19,11 +19,10 @@ namespace TeamsHubWebClient.Gateways.Providers
 
         public List<User> getStudentsByProject(int idProject)
         {
-            List<User> response;
+            List<User> response = null;
             try
             {
-                 var result = clientServiceUser.GetAsync($"/TeamHub/Users/ByProject/{idProject}").Result;
-                Console.WriteLine(result);
+                var result = clientServiceUser.GetAsync($"/TeamHub/Users/ByProject/{idProject}").Result;
                 result.EnsureSuccessStatusCode();
                 response = result.Content.ReadFromJsonAsync<List<User>>().Result;
             }

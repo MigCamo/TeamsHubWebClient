@@ -46,20 +46,6 @@ public class ProjectManagerRESTProvider : IProjectManager
             return null;
         }
     }
-    public ProjectDTO GetProject(int idProject)
-    {
-        try
-        {
-            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/{idProject}").Result;
-            result.EnsureSuccessStatusCode();
-            var response = result.Content.ReadFromJsonAsync<ProjectDTO>().Result;
-            return response;
-        }
-        catch (Exception ex)
-        {
-            return null;
-        }
-    }
     public List<ProjectDTO> GetProjectsbyDate(DateTime startDate, DateTime endDate)
     {
         try {                        
