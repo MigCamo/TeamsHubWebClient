@@ -11,7 +11,6 @@ namespace TeamsHubWebClient.Gateways.Interfaces
         public ProjectDTO GetProject(int idProject);
         public  List<ProjectDTO> GetAllMyProjects(int idStudent);
         public List<ProjectDTO> GetProjectsbyDate(DateTime startDate, DateTime endDate);
-        public ProjectDTO GetProject(int IdProject);
         public List<TaskDTO> GetProjectTasksAsync(int idProject);
     }
 }

@@ -50,7 +50,7 @@ public class ProjectManagerRESTProvider : IProjectManager
     {
         try
         {
-            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/{idProject}").Result;
+            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/Project/{idProject}").Result;
             result.EnsureSuccessStatusCode();
             var response = result.Content.ReadFromJsonAsync<ProjectDTO>().Result;
             return response;
@@ -89,22 +89,6 @@ public class ProjectManagerRESTProvider : IProjectManager
         catch (Exception ex)
         {
             return false;
-        }
-    }
-
-    public ProjectDTO GetProject(int IdProject)
-    {
-        try
-        {
-            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/Project/{IdProject}").Result;
-            result.EnsureSuccessStatusCode();
-            var response = result.Content.ReadFromJsonAsync<ProjectDTO>().Result;
-            return response;    
-        }
-        catch (Exception ex)
-        {
-            _logger.LogInformation(ex.ToString());
-            return null;
         }
     }
 
