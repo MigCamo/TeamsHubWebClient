@@ -7,6 +7,4 @@ public static class ProjectSinglenton
     public static String Name {get; set;}
     public static DateTime? StartDate { get; set; }
     public static DateTime? EndDate { get; set; }
-
-
 }

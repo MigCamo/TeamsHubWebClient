@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background: url('/images/Background2.jpeg') no-repeat center center fixed;
     display: flex;
     height: 100vh;
     overflow: hidden; /* Prevent overall scrolling */

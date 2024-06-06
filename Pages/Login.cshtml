@@ -18,24 +18,19 @@
 <body>
     <div class="background">
         <div class="container">
-            <img src="/images/Team_Hub-removebg-preview.png"
-                alt="Team Hub" class="logo">
+            <img src="/images/Team_Hub-removebg-preview.png" alt="Team Hub" class="logo">
             <div class="overlay">
                 <div class="form-container">
                     <form method="post">
                         <h1 class="title">Sign in</h1>
                         <p class="subtitle">Por favor ingrese su correo y contraseña</p>
                         <div class="input-group">
-                            <img src="/images/ICON-EMAIL.png"
-                                alt="Email Icon" class="icon">
-                            <input type="text" placeholder="Email" class="input" id="txtEmail" required="required"
-                                asp-for="@Model.sessionLoginRequest.Email">
+                            <img src="/images/ICON-EMAIL.png" alt="Email Icon" class="icon">
+                            <input type="text" placeholder="Email" class="input" id="txtEmail" required="required" asp-for="sessionLoginRequest.Email">
                         </div>
                         <div class="input-group">
-                            <img src="/images/ICON-PASSWORD.png"
-                                alt="Password Icon" class="icon">
-                            <input type="password" placeholder="Password" class="input" id="txtPassword"
-                                required="required" asp-for="@Model.sessionLoginRequest.Password">
+                            <img src="/images/ICON-PASSWORD.png" alt="Password Icon" class="icon">
+                            <input type="password" placeholder="Password" class="input" id="txtPassword" required="required" asp-for="sessionLoginRequest.Password">
                             <label for="showPassword" class="show-password">Mostrar</label>
                         </div>
                         <button class="sign-in-button" type="submit" value="login">Sign in</button>
