@@ -46,6 +46,20 @@ public class ProjectManagerRESTProvider : IProjectManager
             return null;
         }
     }
+    public ProjectDTO GetProject(int idProject)
+    {
+        try
+        {
+            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/Project/{idProject}").Result;
+            result.EnsureSuccessStatusCode();
+            var response = result.Content.ReadFromJsonAsync<ProjectDTO>().Result;
+            return response;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+    }
     public List<ProjectDTO> GetProjectsbyDate(DateTime startDate, DateTime endDate)
     {
         try {                        
@@ -75,22 +89,6 @@ public class ProjectManagerRESTProvider : IProjectManager
         catch (Exception ex)
         {
             return false;
-        }
-    }
-
-    public ProjectDTO GetProject(int IdProject)
-    {
-        try
-        {
-            var result = clientServiceProjects.GetAsync($"/TeamHub/Projects/Project/{IdProject}").Result;
-            result.EnsureSuccessStatusCode();
-            var response = result.Content.ReadFromJsonAsync<ProjectDTO>().Result;
-            return response;    
-        }
-        catch (Exception ex)
-        {
-            _logger.LogInformation(ex.ToString());
-            return null;
         }
     }
 
