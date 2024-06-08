@@ -7,10 +7,12 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ventana del Proyecto</title>
+
     <style>
         * {
             margin: 0;
@@ -64,8 +66,10 @@
             align-items: center;
             padding: 20px 0;
             justify-content: center;
-            height: 100%; /* Adjust height based on header height */
-            position: fixed; /* Fixed position to stay in place */
+            height: 100%;
+            /* Adjust height based on header height */
+            position: fixed;
+            /* Fixed position to stay in place */
         }
 
         .sidebar .icon {
@@ -83,7 +87,8 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            margin-left: 80px; /* Space for the sidebar */
+            margin-left: 80px;
+            /* Space for the sidebar */
         }
 
         .left-content {
@@ -168,49 +173,59 @@
         }
 
         #taskList {
-        margin-top: 20px; /* Espacio superior */
+            margin-top: 20px;
+            /* Espacio superior */
         }
 
         /* Estilo para cada tarea */
         .taskItem {
-            border: 2px solid black; /* Borde negro */
-            border-radius: 10px; /* Bordes redondeados */
-            padding: 10px; /* Espacio interno */
-            margin-bottom: 20px; /* Espacio inferior */
+            border: 2px solid black;
+            /* Borde negro */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            padding: 10px;
+            /* Espacio interno */
+            margin-bottom: 20px;
+            /* Espacio inferior */
         }
     </style>
 </head>
+
 <body>
-
-
     <div class="header">
-        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/4885/4885344.png" alt="Back Arrow" class="back-arrow"></a>
+        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/4885/4885344.png" alt="Back Arrow"
+                class="back-arrow"></a>
         <span class="project-title">Miembros del proyecto</span>
     </div>
-        
+
     <div class="sidebar">
-        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/5956/5956494.png" alt="Project Icon" class="icon"></a>
-        <a href="/ActivitiesModule"><img src="https://cdn-icons-png.flaticon.com/512/7891/7891841.png" alt="Task Icon" class="icon"></a>
-        <a href="/FileModule"><img src="https://cdn-icons-png.flaticon.com/512/14779/14779557.png" alt="Download Icon" class="icon"></a>
-        <a href="/AddStudentsToProject"><img src="https://cdn-icons-png.freepik.com/256/3135/3135715.png" alt="Add Students Icon" class="icon"></a>
-        <a href="/Login"><img src="https://cdn-icons-png.flaticon.com/512/1716/1716282.png" alt="Exit Icon" class="icon"></a>
-    </div> 
-       
+        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/5956/5956494.png" alt="Project Icon"
+                class="icon"></a>
+        <a href="/AddStudentsToProject"><img src="https://cdn-icons-png.flaticon.com/512/5073/5073264.png"
+                alt="DetailsProyect Icon" class="icon"></a>
+        <a href="/ActivitiesModule"><img src="https://cdn-icons-png.flaticon.com/512/7891/7891841.png" alt="Task Icon"
+                class="icon"></a>
+        <a href="/FileModule"><img src="https://cdn-icons-png.flaticon.com/512/14779/14779557.png" alt="Download Icon"
+                class="icon"></a>
+        <a href="/ProjectProgressModule"><img src="https://cdn-icons-png.flaticon.com/512/7185/7185654.png"
+                alt="Reports Icon" class="icon"></a>
+        <a href="/Login"><img src="https://cdn-icons-png.flaticon.com/512/1716/1716282.png" alt="Exit Icon"
+                class="icon"></a>
+    </div>
+
     <div class="content-wrapper">
-        
         <div class="main-content">
             <div class="left-content">
                 <h1 id="ProjectName"></h1>
                 <p id="ProjectInfo">Aquí va el contenido de la izquierda.</p>
-
                 <h2>Tareas</h2>
                 <div id="taskList">
-
                 </div>
             </div>
             <div class="right-content">
                 <div class="search-bar">
-                    <input type="text" class="search-input" list="listStudentOptions" id="searchBar" placeholder="Buscar usuario con correo">
+                    <input type="text" class="search-input" list="listStudentOptions" id="searchBar"
+                        placeholder="Buscar usuario con correo">
                     <button class="search-button" onclick="addStudent()">Buscar</button>
                     <datalist id="listStudentOptions"></datalist>
                 </div>
@@ -222,6 +237,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
     <script>
         var userList = @Html.Raw(Json.Serialize(Model.StudentList));
         var taskList = @Html.Raw(Json.Serialize(Model.ProjectTask));
@@ -229,7 +245,7 @@
         var projectId = @Model.idProject;
         var newStudenList = [];
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             var projectName = document.getElementById("ProjectName");
             var projectInfo = document.getElementById("ProjectInfo");
             console.log(taskList);
@@ -237,7 +253,7 @@
             projectInfo.textContent = "Fecha de inicio: " + projecData.startDate + " Fecha de finalización: " + projecData.endDate;
             addTaskList();
             loadStudents();
-            $('#searchBar').on('input', function() {
+            $('#searchBar').on('input', function () {
                 searchStudent();
             });
         });
@@ -246,15 +262,15 @@
             var courseList = $('#courseList');
             courseList.empty();
 
-            userList.forEach(function(user) {
+            userList.forEach(function (user) {
                 var userRow = $('<div class="user-row">');
                 var userImage = $('<img>').attr('src', 'https://cdn-icons-png.freepik.com/256/3135/3135715.png').attr('alt', 'Usuario');
                 var userName = $('<span class="user-name">').html('<b>Nombre:</b> ' + user.fullName + '<b>    Correo electrónico:</b> ' + user.email);
                 var deleteButton = $('<button class="delete-button">').text('Borrar');
 
-                deleteButton.on('click', function() {
+                deleteButton.on('click', function () {
                     deleteStudent(user.id, userRow);
-                });    
+                });
 
                 userRow.append(userImage, userName, deleteButton);
                 courseList.append(userRow);
@@ -265,34 +281,34 @@
             $.ajax({
                 url: 'http://localhost:8081/TeamHub/Users/RemoveOfProject/' + projectId + '/' + idStudent,
                 type: 'DELETE',
-                success: function(result) {
+                success: function (result) {
                     alert('Usuario eliminado exitosamente');
                     userRow.remove();
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error('Error al eliminar el usuario:', error);
                 }
             });
         }
 
-        function searchStudent()  {
+        function searchStudent() {
             var student = document.getElementById("searchBar").value.trim();
-            if (student.length > 0){
+            if (student.length > 0) {
                 $.ajax({
                     url: 'http://localhost:8081/TeamHub/Users/Search/' + encodeURIComponent(student),
                     type: 'GET',
-                    success: function(result) {
+                    success: function (result) {
                         var dataList = document.getElementById("listStudentOptions");
                         dataList.innerHTML = '';
                         newStudenList = result;
-                        result.forEach(function(student) {
+                        result.forEach(function (student) {
                             var option = document.createElement('option');
                             option.value = student.email;
                             option.textContent = student.email;
                             dataList.appendChild(option);
                         });
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error('Error al buscar el usuario:', error);
                     }
                 })
@@ -306,14 +322,14 @@
                 $.ajax({
                     url: 'http://localhost:8081/TeamHub/Users/AddToProject/' + projectId + '/' + student.id,
                     type: 'POST',
-                    success: function(result) {
+                    success: function (result) {
                         alert('Usuario agregado exitosamente');
                         newStudenList = [];
                         document.getElementById("searchBar").value = '';
                         updateUserList();
                         loadStudents();
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error('Error al agregar el usuario:', error);
                     }
                 })
@@ -339,10 +355,10 @@
             $.ajax({
                 url: 'http://localhost:8081/TeamHub/Users/ByProject/' + projectId,
                 type: 'GET',
-                success: function(result) {
+                success: function (result) {
                     userList = @Html.Raw(Json.Serialize(Model.StudentList));
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error('Error al actualizar la lista de usuarios:', error);
                 }
             })
@@ -350,7 +366,7 @@
 
         function addTaskList() {
             var taskListDiv = document.getElementById("taskList");
-            taskList.forEach(function(task) {
+            taskList.forEach(function (task) {
                 var taskItem = document.createElement("div");
                 taskItem.classList.add("taskItem");
 
@@ -367,4 +383,5 @@
         }
     </script>
 </body>
+
 </html>

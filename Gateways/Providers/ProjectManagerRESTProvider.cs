@@ -91,7 +91,6 @@ public class ProjectManagerRESTProvider : IProjectManager
             return false;
         }
     }
-
     public List<TaskDTO>? GetProjectTasksAsync(int idProject)
     {
         List<TaskDTO>? taskList = new List<TaskDTO>();
