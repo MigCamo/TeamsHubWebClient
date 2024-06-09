@@ -35,7 +35,7 @@ namespace TeamsHubWebClient.Pages
                 var response = _UserIdentityManager.ValidateUser(sessionLoginRequest);
                 if (response.IsValid)
                 {
-                    HttpContext.Session.SetString("token_usuario", sessionLoginRequest.Email);
+                    HttpContext.Session.SetString("token_usuario", response.token);
                     StudentSinglenton.Id = response.User.Id;
                     StudentSinglenton.Email = response.User.Email;
                     StudentSinglenton.FullName = response.User.FullName;

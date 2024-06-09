@@ -29,11 +29,12 @@ namespace TeamsHubWebClient.Pages
             _logger = logger;
             _UserManager = userManager;
             _ProjectManager = ProjectManager;
-            
+            Console.WriteLine(ProjectSinglenton.Id +  "    NO LO SE RICK; PARECE VERDADERO");
         }  
 
         public void OnGet()
         {
+            Console.WriteLine(ProjectSinglenton.Id +  "    NO LO SE RICK; PARECE FALSO");
             StudentList = _UserManager.getStudentsByProject(ProjectSinglenton.Id);
             ProjectData = _ProjectManager.GetProject(ProjectSinglenton.Id);
             ProjectTask = _ProjectManager.GetProjectTasksAsync(ProjectSinglenton.Id); 
