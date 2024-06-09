@@ -1,4 +1,5 @@
 using System.Text;
+using TeamHubServiceUser.Entities;
 using TeamsHubWebClient.DTOs;
 using TeamsHubWebClient.Gateways.Interfaces;
 
@@ -17,19 +18,38 @@ namespace TeamsHubWebClient.Gateways.Providers
             clientServiceUser = httpClientFactory.CreateClient("ApiGateWay");
         }
 
-        public List<User> getStudentsByProject(int idProject)
+        public bool AddStudent(StudentDTO newStudent)
         {
-            List<User> response;
             try
             {
-                 var result = clientServiceUser.GetAsync($"/TeamHub/Users/ByProject/{idProject}").Result;
-                Console.WriteLine(result);
+                var result = clientServiceUser.PostAsJsonAsync($"/TeamHub/Users", newStudent).Result;
+                result.EnsureSuccessStatusCode();
+                var response = result.Content.ReadFromJsonAsync<Boolean>().Result;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool EditStudent(StudentDTO editStudent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> getStudentsByProject(int idProject)
+        {
+            List<User> response = null;
+            try
+            {
+                var result = clientServiceUser.GetAsync($"/TeamHub/Users/ByProject/{idProject}").Result;
                 result.EnsureSuccessStatusCode();
                 response = result.Content.ReadFromJsonAsync<List<User>>().Result;
             }
             catch (System.Exception)
             {
-                
+
                 throw;
             }
             return response;

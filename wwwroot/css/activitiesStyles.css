@@ -182,11 +182,11 @@ body {
 }
 
 .modal-content {
-    background-color: white;
-    padding: 20px;
+    background-color: rgb(35, 29, 29);
+    padding: 30px;
     border-radius: 10px;
-    width: 300px;
-    max-height: 90vh;
+    width: 700px;
+    max-height: 100vh;
     overflow-y: auto;
 }
 
@@ -198,6 +198,7 @@ body {
 
 form label {
     display: block;
+    color: white;
     margin-top: 10px;
 }
 
@@ -226,6 +227,11 @@ form button:first-of-type {
 }
 
 form button:last-of-type {
-    background-color: #e74c3c;
-    color: white;
+    background-color: #3071b5;
+    color: rgb(234 232 232);
+    border-radius: 40px;
+    width: 300px;
+    font-weight: bold;
+    margin-left: 160px;
+    margin-top: 30px;
 }
