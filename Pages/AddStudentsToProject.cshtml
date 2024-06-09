@@ -22,35 +22,88 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: url(/images/Background2.jpeg) no-repeat center center fixed;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: white;
         }
 
         .header {
             width: 95%;
-            background-color: #e0e0e0;
+            background-color: #201c1c;
             padding: 10px;
             display: flex;
+            border-radius: 40px;
             justify-content: space-between;
             align-items: center;
             margin-left: 4%;
             margin-top: 1%;
         }
 
+        h1 {
+            display: block;
+            font-size: 2em;
+            margin-block-start: 0.67em;
+            margin-block-end: 0.67em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+            color: #3cb3c5;
+            margin-left: 21px;
+        }
+
+        h2 {
+            display: block;
+            font-size: 1.8em;
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+            margin-left: 307px;
+            margin-top: 35px;
+        }
+
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: -4px;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+            margin-left: 23px;
+            font-size: 19px;
+        }
+
         .back-arrow {
-            width: 30px;
-            height: 30px;
+            width: 55px;
+            height: 55px;
+            margin-left: 20px;
             cursor: pointer;
         }
 
         .project-title {
-            font-size: 1.5em;
+            font-size: 1.9em;
             font-weight: bold;
-            color: #4b2d12;
+            color: #f3f0ed;
             flex-grow: 1;
             text-align: center;
+            margin-right: 1151px;
+        }
+
+        .user-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            border: white;
+            height: 83px;
+            border-radius: 40px;
+            background: #343037;
+            width: 23cm;
+            padding: 36px;
         }
 
         .content-wrapper {
@@ -81,14 +134,13 @@
 
         .main-content {
             flex-grow: 1;
-            background-color: white;
-            border-radius: 10px;
+            background-color: #201c1c;
+            border-radius: 40px;
             margin: 20px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            margin-left: 80px;
-            /* Space for the sidebar */
+            margin-left: 72px;
         }
 
         .left-content {
@@ -103,8 +155,8 @@
         }
 
         .search-bar {
-            background-color: white;
-            margin-bottom: 20px;
+            background-color: #201c1c;
+            margin-bottom: -5px;
             padding: 20px;
             display: flex;
             align-items: center;
@@ -113,19 +165,24 @@
         .search-input {
             flex-grow: 1;
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #201c1c;
             border-radius: 10px;
-            font-size: 1em;
+            color: white;
+            background: #494852;
+            font-size: 22px;
         }
 
         .search-button {
             background-color: black;
             color: white;
             border: none;
+            width: 126px;
+            font-size: 18px;
             padding: 10px 20px;
-            border-radius: 10px;
+            border-radius: 40px;
             cursor: pointer;
             margin-left: 10px;
+            height: 48px;
         }
 
         .search-button:hover {
@@ -143,16 +200,10 @@
         }
 
         .user-row img {
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             margin-right: 10px;
-        }
-
-        .user-name {
-            flex-grow: 1;
-            font-size: 1em;
-            color: #333;
         }
 
         .delete-button {
@@ -160,8 +211,12 @@
             color: white;
             border: none;
             padding: 5px 10px;
-            border-radius: 5px;
+            border-radius: 15px;
+            width: 99px;
+            height: 37px;
+            font-size: 17px;
             cursor: pointer;
+            font-weight: bold;
         }
 
         #listStudentOptions option {
@@ -177,16 +232,19 @@
             /* Espacio superior */
         }
 
-        /* Estilo para cada tarea */
         .taskItem {
-            border: 2px solid black;
-            /* Borde negro */
+            border: 3px solid black;
+            width: 19cm;
             border-radius: 10px;
-            /* Bordes redondeados */
-            padding: 10px;
-            /* Espacio interno */
+            padding: 14px;
             margin-bottom: 20px;
-            /* Espacio inferior */
+            height: 103px;
+        }
+
+        .user-name {
+            flex-grow: 1;
+            font-size: 20px;
+            color: #ffecec;
         }
     </style>
 </head>
@@ -217,7 +275,8 @@
         <div class="main-content">
             <div class="left-content">
                 <h1 id="ProjectName"></h1>
-                <p id="ProjectInfo">Aquí va el contenido de la izquierda.</p>
+                <p id="ProjectStartDate">Aquí va el contenido de la izquierda.</p>
+                <p id="ProjectEndDate">Aquí va el contenido de la izquierda.</p>
                 <h2>Tareas</h2>
                 <div id="taskList">
                 </div>
@@ -237,7 +296,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    
+
     <script>
         var userList = @Html.Raw(Json.Serialize(Model.StudentList));
         var taskList = @Html.Raw(Json.Serialize(Model.ProjectTask));
@@ -247,10 +306,12 @@
 
         $(document).ready(function () {
             var projectName = document.getElementById("ProjectName");
-            var projectInfo = document.getElementById("ProjectInfo");
+            var projectStartDate = document.getElementById("ProjectStartDate");
+            var projectEndDate = document.getElementById("ProjectEndDate");
             console.log(taskList);
             projectName.textContent = projecData.name;
-            projectInfo.textContent = "Fecha de inicio: " + projecData.startDate + " Fecha de finalización: " + projecData.endDate;
+            projectStartDate.textContent = "Fecha de inicio: " + projecData.startDate;
+            projectEndDate.textContent = "Fecha de finalización: " + projecData.endDate;
             addTaskList();
             loadStudents();
             $('#searchBar').on('input', function () {

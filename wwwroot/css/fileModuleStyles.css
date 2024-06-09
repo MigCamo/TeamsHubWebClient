@@ -17,22 +17,18 @@ body {
 
 .sidebar {
     width: 60px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Este ajuste centra los íconos verticalmente */
     padding: 20px 0;
-    position: fixed;
-    height: 100%;
-    top: 0;
-    left: 0;
 }
 
 .sidebar .icon {
     width: 40px;
     height: 40px;
-    margin-bottom: 20px;
-    margin-left: 5px;
+    margin: 20px 0; /* Ajusta el margen para centrar los íconos */
     cursor: pointer;
 }
 
