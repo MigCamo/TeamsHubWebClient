@@ -25,6 +25,7 @@
         box-sizing: border-box;
     }
 
+
     #back-arrow {
         width: 65px;
         cursor: pointer;
@@ -212,16 +213,6 @@
                     <option value="Terminado">Terminado</option>
                 </select>
                 <span asp-validation-for="projectDTO.Status" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label for="user-email">Agregar Integrantes</label>
-                <div class="search-bar">
-                    <input type="text" id="user-email" name="user-email" placeholder="Ingresar correo del usuario"
-                        class="form-control">
-                    <img src="https://cdn-icons-png.flaticon.com/512/751/751381.png" alt="Buscar" id="search-icon"
-                        onclick="searchUser()">
-                </div>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
